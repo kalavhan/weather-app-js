@@ -94,7 +94,7 @@
           <select>
             <option value="MX">México</option>
           </select>
-          <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+          <input id="autocomplete" placeholder="Enter a city" type="text" class="pac-target-input" autocomplete="off">
         </div>
         <div class="google-search">
           <p>Search with google maps!</p>
@@ -118,14 +118,13 @@
             <h4 id="weatherFeelsLike"></h4>
           </div>
           <div>
+            <h2 id="longitud"></h2>
             <h2 id="latitud"></h2>
           </div>
         </div>
       </div>
     </div>
     <script src="main.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA-hcf9d4DxGYURL6G5dwJC1kLcJ-HeD8c&libraries=places&callback=initAutocomplete"
-         async defer></script>
   </body>
   <script>
     
