@@ -17,13 +17,14 @@ const initializeGMap = () => {
     function onPlaceChanged() {
       var place = autocomplete.getPlace();
       if (place.geometry) {
-        const formatted_data = place.formatted_address.split(', ');
-        if(formatted_data.length > 2){
-          dom.selectedUbicationCity(formatted_data[0], formatted_data[1]);
-        }else{
-          const lat = place.geometry.location.lat();
-          const lon = place.geometry.location.lng();
-          dom.selectedUbicationCoor(lat, lon);
+        console.log(place);
+        const formatted_data = place.address_components;
+        if(formatted_data.length == 3){
+          dom.selectedUbicationCity(formatted_data[0].long_name, formatted_data[1].long_name, formatted_data[2].short_name);
+        }else if(formatted_data.length == 4) {
+          console.log(formatted_data[1].long_name);
+          console.log(formatted_data[2].long_name);
+          dom.selectedUbicationCity(formatted_data[1].long_name, formatted_data[2].long_name, formatted_data[3].short_name);
         }
       } else {
         document.getElementById('pac-input').placeholder = 'Enter a city';

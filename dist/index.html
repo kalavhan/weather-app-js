@@ -89,41 +89,48 @@
   </head>
   <body>
     <div id="content">
-      <div class="search-container">
-        <div class="normal-search">
-          <select>
-            <option value="MX">México</option>
-          </select>
-          <input id="autocomplete" placeholder="Enter a city" type="text" class="pac-target-input" autocomplete="off">
-        </div>
-        <div class="google-search">
-          <p>Search with google maps!</p>
-          <button>Open maps</button>
-        </div>
+      <input id="autocomplete" placeholder="Enter a city" type="text" class="pac-target-input" autocomplete="off">
+      <label class="switch">
+        <span class="celsius">°C</span>
+        <input type="checkbox">
+        <span class="slider round"></span>
+        <span class="fahrenheit">°F</span>
+      </label>
+      <p>
+        <span id="weatherCityName"></span>
+        <span id="weatherCountryName"></span>
+      </p>
+      <div>
+        <p><span id="weatherFeelsLike"></span><span id="weatherFeelsLikeSym"></span></p>
+        <h6>Feels like</h6>
       </div>
-      <div class="weather-container">
-        <label class="switch">
-          <span class="celsius">°C</span>
-          <input type="checkbox">
-          <span class="slider round"></span>
-          <span class="fahrenheit">°F</span>
-        </label>
-        <p>
-          <span id="weatherCityName"></span>
-          <span id="weatherCountryName"></span>
-        </p>
-        <div>
-          <div>
-            <h6>Feels like</h6>
-            <h4 id="weatherFeelsLike"></h4>
-          </div>
-          <div>
-            <h2 id="longitud"></h2>
-            <h2 id="latitud"></h2>
-          </div>
-        </div>
+      <div id="weatherIcon" class="weather-icon">
+      </div>
+      <div>
+        <h4 id="weatherWind"></h4>
+        <div class="weatherWindIcon"></div>
+      </div>
+      <h4 id="weatherDescription"></h4>
+      <p><span id="weatherTemp"></span><span id="weatherTempSym"></span></p>
+      <div>
+        <p><span id="weatherTempMin"></span><span id="weatherTempMinSym"></span></p>
+        <div id="weatherTempMinIcon"></div>
+      </div>
+      <div>
+        <p><span id="weatherTempMax"></span><span id="weatherTempMaxSym"></span></p>
+        <div id="weatherTempMaxIcon"></div>
+      </div>
+      <div>
+        <h4 id="weatherHum"></h4>
+        <div id="weatherHumIcon"></div>
+      </div>
+      <div>
+        <h4 id="weatherPres"></h4>
+        <div id="weatherPresIcon"></div>
       </div>
     </div>
+    Icons made by <a href="https://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     <script src="main.js"></script>
   </body>
   <script>

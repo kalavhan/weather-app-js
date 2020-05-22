@@ -8,8 +8,8 @@ const getWeather = () => {
     return response.json();
   }
 
-  async function getWeatherCity(city, state) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&appid=ff6c534fa692d1c761f8ca2f57394e60`
+  async function getWeatherCity(city, state, country) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&appid=ff6c534fa692d1c761f8ca2f57394e60`
     const response = await fetch(url, {
       mode: 'cors',
       credentials: 'omit'
