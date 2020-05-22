@@ -33,19 +33,28 @@ const domInteraction = () => {
   const weatherHumIcon = document.getElementById('weatherHumIcon');
   const weatherPres = document.getElementById('weatherPres');
   const weatherPresIcon = document.getElementById('weatherPresIcon');
+  const weatherDescription = document.getElementById('weatherDescription');
+  const weatherSwitch = document.getElementById('weatherSwitch');
 
-  function initialize(){
+  function initialize() {
     const initialWeather = gw.getWeatherCoor(31.7202396, -106.4608383);
     initialWeather.then(data => {
       console.log(data);
-      let weatherData = data.weather[0];
+      const weatherDegreeType = weatherSwitch.checked == true ? '°F' : '°C'
+      weatherTempSym.innerHTML = weatherDegreeType;
+      weatherTempMaxSym.innerHTML = weatherDegreeType;
+      weatherTempMinSym.innerHTML = weatherDegreeType;
+      console.log(weatherDegreeType);
       cityName.innerHTML = `${data.name},`;
       countryName.innerHTML = data.sys.country;
       feelsLike.innerHTML = data.main.feels_like;
+      weatherDescription.innerHTML = data.weather[0].description;
       weatherWind.innerHTML = data.wind.speed;
-      weatherTemp = data.main.temp;
-      weatherTempMin = data.main.temp_min;
-      weatherTempMax = data.main.temp_min;
+      weatherTemp.innerHTML = data.main.temp;
+      weatherTempMin.innerHTML = data.main.temp_min;
+      weatherTempMax.innerHTML = data.main.temp_max;
+      weatherHum.innerHTML = data.main.humidity;
+      weatherPres.innerHTML = data.main.pressure;
       weatherIcon.innerHTML = img_01d;
     }); 
   }
