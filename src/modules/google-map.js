@@ -4,7 +4,7 @@ import domInteraction from './dom-interaction';
 const initializeGMap = () => {
   const dom = domInteraction();
   const script = document.createElement('script');
-  script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyA-hcf9d4DxGYURL6G5dwJC1kLcJ-HeD8c&libraries=places&result_type=administrative_area_level_2&callback=initAutocomplete';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA-hcf9d4DxGYURL6G5dwJC1kLcJ-HeD8c&libraries=places&result_type=administrative_area_level_2&callback=initAutocomplete';
   script.defer = true;
   script.async = true;
   window.initAutocomplete = () => {

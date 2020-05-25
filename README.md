@@ -15,7 +15,7 @@ This is part of Javascript section in Microverse's Technical curriculum. Find it
 - CSS
 
 ## Live Demo
-[Live link]('')
+[Live link](https://weather-js-kalavhan.netlify.app/)
 
 
 ## Prerequisites
