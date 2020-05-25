@@ -37,7 +37,6 @@ const initializeGMap = () => {
             }
           }
         }
-        console.log(formattedData);
         dom.selectedUbicationCity(city,
           state,
           country);
