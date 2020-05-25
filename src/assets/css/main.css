@@ -81,6 +81,32 @@ body {
   font-size: 14px;
 }
 
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-box {
+  height: 300px;
+  width: 300px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-none {
+  display: none;
+}
+
 @media screen and (max-width: 767px){ 
 }
 

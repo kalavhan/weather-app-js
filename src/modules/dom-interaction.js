@@ -5,9 +5,12 @@ import tempMin from '../assets/images/weather_icons/tempMin.svg';
 import tempMax from '../assets/images/weather_icons/tempMax.svg';
 import hum from '../assets/images/weather_icons/hum.svg';
 import pressure from '../assets/images/weather_icons/pressure.svg';
+import loadingGif from '../assets/gifs/loading.gif';
 
 const domInteraction = () => {
   const gw = getWeather();
+  const loadingContainer = document.getElementById('loadingContainer');
+  document.getElementById('loadingGif').src = loadingGif;
   const cityName = document.getElementById('weatherCityName');
   const feelsLike = document.getElementById('weatherFeelsLike');
   const weatherIcon = document.getElementById('weatherIcon');
@@ -26,6 +29,7 @@ const domInteraction = () => {
   const weatherSwitch = document.getElementById('weatherSwitch');
 
   function initialize() {
+    loadingContainer.classList.remove('display-none');
     const initialWeather = gw.getWeatherCoor(51.509865, -0.118092);
     initialWeather.then(data => {
       let weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
@@ -49,10 +53,14 @@ const domInteraction = () => {
         weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
         weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
       });
+      setTimeout(() => {
+        loadingContainer.classList.add('display-none');
+      }, 1000);
     });
   }
 
   function selectedUbicationCity(city, state, country) {
+    loadingContainer.classList.remove('display-none');
     const newWeather = gw.getWeatherCity(city, state, country);
     newWeather.then(data => {
       let weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
@@ -76,6 +84,9 @@ const domInteraction = () => {
         weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
         weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
       });
+      setTimeout(() => {
+        loadingContainer.classList.add('display-none');
+      }, 1000);
     });
   }
 
