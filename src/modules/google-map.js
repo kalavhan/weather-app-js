@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import domInteraction from './dom-interaction';
 
 const initializeGMap = () => {
@@ -11,23 +12,35 @@ const initializeGMap = () => {
     // eslint-disable-next-line no-undef
     const autocomplete = new google.maps.places.Autocomplete(
       (document.getElementById('autocomplete')), {
-        types: ['(regions)'],
+        types: ['(cities)'],
       },
     );
 
     function onPlaceChanged() {
       const place = autocomplete.getPlace();
+      let country = '';
+      let state = '';
+      let city = '';
       if (place.geometry) {
         const formattedData = place.address_components;
-        if (formattedData.length === 3) {
-          dom.selectedUbicationCity(formattedData[0].long_name,
-            formattedData[1].long_name,
-            formattedData[2].short_name);
-        } else if (formattedData.length === 4) {
-          dom.selectedUbicationCity(formattedData[1].long_name,
-            formattedData[2].long_name,
-            formattedData[3].short_name);
+        for (let i = 0; i < formattedData.length; i += 1) {
+          const obj = formattedData[i];
+          if (obj.types[0] === 'country') {
+            country = obj.short_name;
+          } else if (obj.types[0] === 'administrative_area_level_1' || obj.types[0] === 'administrative_area_level_2') {
+            state = obj.long_name;
+          } else if (obj.types[0] === 'locality' || obj.types[1] === 'locality') {
+            city = obj.long_name;
+            const temp = city.split(' ');
+            if (temp.length === 2 && temp[1] === 'City') {
+              city = temp[0];
+            }
+          }
         }
+        console.log(formattedData);
+        dom.selectedUbicationCity(city,
+          state,
+          country);
       } else {
         document.getElementById('pac-input').placeholder = 'Enter a city';
       }

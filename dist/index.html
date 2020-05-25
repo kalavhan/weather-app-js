@@ -2,135 +2,69 @@
 <html>
   <head>
     <title>Weather app</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
-    </style>
-
   </head>
   <body>
     <div id="content">
-      <input id="autocomplete" placeholder="Enter a city" type="text" class="pac-target-input" autocomplete="off">
-      <label class="switch">
-        <span class="celsius">°C</span>
-        <input id="weatherSwitch" type="checkbox">
-        <span class="slider round"></span>
-        <span class="fahrenheit">°F</span>
-      </label>
-      <p>
-        <span id="weatherCityName"></span>
-        <span id="weatherCountryName"></span>
-      </p>
-      <div>
-        <h4 id="weatherFeelsLike"></h4>
-        <h6>Feels like</h6>
-      </div>
-      <div id="weatherIcon" class="weather-icon">
-      </div>
-      <div>
-        <h4 id="weatherWind"></h4>
-        <div class="weatherWindIcon"></div>
-      </div>
-      <h4 id="weatherDescription"></h4>
-      <h4 id="weatherTemp"></h4>
-      <div>
-        <h4 id="weatherTempMin"></h4>
-        <div id="weatherTempMinIcon"></div>
-      </div>
-      <div>
-        <h4 id="weatherTempMax"></h4>
-        <div id="weatherTempMaxIcon"></div>
-      </div>
-      <div>
-        <h4 id="weatherHum"></h4>
-        <div id="weatherHumIcon"></div>
-      </div>
-      <div>
-        <h4 id="weatherPres"></h4>
-        <div id="weatherPresIcon"></div>
+      <div class="weather-container">
+        <div class="container-autoComplete">
+          <input id="autocomplete" placeholder="Enter a city" type="text" class="pac-target-input" autocomplete="off">
+        </div>
+        <div class="container-switch">
+          <label class="switch">
+            <span class="celsius">°C</span>
+            <input id="weatherSwitch" type="checkbox">
+            <span class="slider round"></span>
+            <span class="fahrenheit">°F</span>
+          </label>  
+        </div>
+        <h4 class="container-cityName" id="weatherCityName"></h4>
+        <div class="container-topMain">
+          <div class='container-iconGroup'>
+            <div class="container-feelsLike">
+              <h4 id="weatherFeelsLike"></h4>
+              <h6>Feels like</h6>
+            </div>
+            <div id="weatherIcon" class="weather-icon">
+            </div>
+            <div class="container-wind">
+              <h4 id="weatherWind"></h4>
+              <div class="wind-icon" id="weatherWindIcon"></div>
+            </div>
+          </div>
+          <div class="container-temp">
+            <h4 id="weatherDescription"></h4>
+            <h4 id="weatherTemp"></h4>
+          </div>
+        </div>
+        <div class="container-tempMin">
+          <h4 id="weatherTempMin"></h4>
+          <div class="weather-icon" id="weatherTempMinIcon"></div>
+        </div>
+        <div class="container-tempMax">
+          <h4 id="weatherTempMax"></h4>
+          <div class="weather-icon" id="weatherTempMaxIcon"></div>
+        </div>
+        <div class="container-hum">
+          <h4 id="weatherHum"></h4>
+          <div class="weather-icon" id="weatherHumIcon"></div>
+        </div>
+        <div class="container-pres">
+          <h4 id="weatherPres"></h4>
+          <div class="weather-icon" id="weatherPresIcon"></div>
+        </div>
       </div>
     </div>
-    Icons made by <a href="https://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    <div class="thanks-icons">
+      <h6>
+        Icons made by <a href="https://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+      </h6>
+      <h6>
+        Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+      </h6>
+      <h6>
+        Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+      </h6>  
+    </div>
     <script src="main.js"></script>
   </body>
   <script>
