@@ -28,34 +28,43 @@ const domInteraction = () => {
   const weatherDescription = document.getElementById('weatherDescription');
   const weatherSwitch = document.getElementById('weatherSwitch');
 
-  function initialize() {
-    loadingContainer.classList.remove('display-none');
-    const initialWeather = gw.getWeatherCoor(51.509865, -0.118092);
-    initialWeather.then(data => {
-      let weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
-      let windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
-      cityName.innerHTML = `${data.name}, ${data.sys.country}`;
-      weatherDescription.innerHTML = data.weather[0].description;
+  const addData = (data) => {
+    let weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
+    let windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
+    cityName.innerHTML = `${data.name}, ${data.sys.country}`;
+    weatherDescription.innerHTML = data.weather[0].description;
+    feelsLike.innerHTML = helpers.convertDegreeType(data.main.feels_like, weatherDegreeType);
+    weatherTemp.innerHTML = helpers.convertDegreeType(data.main.temp, weatherDegreeType);
+    weatherTempMin.innerHTML = helpers.convertDegreeType(data.main.temp_min, weatherDegreeType);
+    weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
+    weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
+    weatherHum.innerHTML = `${data.main.humidity}%`;
+    weatherPres.innerHTML = `${data.main.pressure} hPa`;
+    weatherIcon.innerHTML = helpers.getWeatherIcon(data.weather[0].icon);
+    weatherSwitch.addEventListener('change', () => {
+      weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
+      windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
       feelsLike.innerHTML = helpers.convertDegreeType(data.main.feels_like, weatherDegreeType);
       weatherTemp.innerHTML = helpers.convertDegreeType(data.main.temp, weatherDegreeType);
       weatherTempMin.innerHTML = helpers.convertDegreeType(data.main.temp_min, weatherDegreeType);
       weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
       weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
-      weatherHum.innerHTML = `${data.main.humidity}%`;
-      weatherPres.innerHTML = `${data.main.pressure} hPa`;
-      weatherIcon.innerHTML = helpers.getWeatherIcon(data.weather[0].icon);
-      weatherSwitch.addEventListener('change', () => {
-        weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
-        windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
-        feelsLike.innerHTML = helpers.convertDegreeType(data.main.feels_like, weatherDegreeType);
-        weatherTemp.innerHTML = helpers.convertDegreeType(data.main.temp, weatherDegreeType);
-        weatherTempMin.innerHTML = helpers.convertDegreeType(data.main.temp_min, weatherDegreeType);
-        weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
-        weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
-      });
-      setTimeout(() => {
+    });
+    setTimeout(() => {
+      loadingContainer.classList.add('display-none');
+    }, 1000);
+  };
+
+  function initialize() {
+    loadingContainer.classList.remove('display-none');
+    const initialWeather = gw.getWeatherCoor(51.509865, -0.118092);
+    initialWeather.then(data => {
+      if (data.cod && data.message) {
         loadingContainer.classList.add('display-none');
-      }, 1000);
+        helpers.handleErrorMessage(data);
+      } else {
+        addData(data);
+      }
     });
   }
 
@@ -63,30 +72,12 @@ const domInteraction = () => {
     loadingContainer.classList.remove('display-none');
     const newWeather = gw.getWeatherCity(city, state, country);
     newWeather.then(data => {
-      let weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
-      let windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
-      cityName.innerHTML = `${data.name}, ${data.sys.country}`;
-      weatherDescription.innerHTML = data.weather[0].description;
-      feelsLike.innerHTML = helpers.convertDegreeType(data.main.feels_like, weatherDegreeType);
-      weatherTemp.innerHTML = helpers.convertDegreeType(data.main.temp, weatherDegreeType);
-      weatherTempMin.innerHTML = helpers.convertDegreeType(data.main.temp_min, weatherDegreeType);
-      weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
-      weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
-      weatherHum.innerHTML = `${data.main.humidity}%`;
-      weatherPres.innerHTML = `${data.main.pressure} hPa`;
-      weatherIcon.innerHTML = helpers.getWeatherIcon(data.weather[0].icon);
-      weatherSwitch.addEventListener('change', () => {
-        weatherDegreeType = weatherSwitch.checked === true ? '°F' : '°C';
-        windSpeedType = weatherSwitch.checked === true ? 'mi' : 'km';
-        feelsLike.innerHTML = helpers.convertDegreeType(data.main.feels_like, weatherDegreeType);
-        weatherTemp.innerHTML = helpers.convertDegreeType(data.main.temp, weatherDegreeType);
-        weatherTempMin.innerHTML = helpers.convertDegreeType(data.main.temp_min, weatherDegreeType);
-        weatherTempMax.innerHTML = helpers.convertDegreeType(data.main.temp_max, weatherDegreeType);
-        weatherWind.innerHTML = helpers.convertVelocityType(data.wind.speed, windSpeedType);
-      });
-      setTimeout(() => {
+      if (data === 'error') {
         loadingContainer.classList.add('display-none');
-      }, 1000);
+        helpers.handleErrorMessage(data);
+      } else {
+        addData(data);
+      }
     });
   }
 

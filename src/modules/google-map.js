@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
 import domInteraction from './dom-interaction';
 
@@ -8,8 +9,6 @@ const initializeGMap = () => {
   script.defer = true;
   script.async = true;
   window.initAutocomplete = () => {
-    // Create the search box and link it to the UI element.
-    // eslint-disable-next-line no-undef
     const autocomplete = new google.maps.places.Autocomplete(
       (document.getElementById('autocomplete')), {
         types: ['(cities)'],

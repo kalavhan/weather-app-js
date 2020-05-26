@@ -100,10 +100,27 @@ const helpers = (() => {
     return img;
   };
 
+  const handleErrorMessage = (e) => {
+    const errorContainer = document.createElement('div');
+    errorContainer.classList.add('error-container');
+    const errorTitle = document.createElement('h4');
+    errorTitle.innerHTML = 'Error:';
+    const errorMessage = document.createElement('p');
+    errorMessage.innerHTML = e.message;
+    errorContainer.appendChild(errorTitle);
+    errorContainer.appendChild(errorMessage);
+    const content = document.getElementById('content');
+    content.appendChild(errorContainer);
+    setTimeout(() => {
+      content.removeChild(errorContainer);
+    }, 2000);
+  };
+
   return {
     convertDegreeType,
     convertVelocityType,
     getWeatherIcon,
+    handleErrorMessage,
   };
 })();
 

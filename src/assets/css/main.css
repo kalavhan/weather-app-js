@@ -107,6 +107,29 @@ body {
   display: none;
 }
 
+.error-container {
+  position: absolute;
+  width: 300px;
+  bottom: 60px;
+  right: 60px;
+  background-color: #fff;
+  border-left-style: solid;
+  border-left-color: rgb(230, 11, 11);
+  border-left-width: 2px;
+}
+
+.error-container > h4 {
+  color: #ff0000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #000;
+}
+
+.error-container > p {
+  color: #000;
+  padding-top: 10px;
+}
+
 @media screen and (max-width: 767px){ 
 }
 
