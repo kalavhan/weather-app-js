@@ -2,13 +2,48 @@
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 ![issues](https://img.shields.io/github/issues/kalavhan/restaurant-page)
 
-# Project: weather app
-
-This is part of Javascript section in Microverse's Technical curriculum. Find it [here](https://www.theodinproject.com/courses/javascript/lessons/weather-app).
+<br />
+<p align="center">
+ 
+  <h3 align="center">Weather App</h3>
+  <p align="center">
+    Web application to get the weather of any city around the world. Built with Javascript.
+    <br />
+    <a href="#table-of-contents"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    ·
+    <a href="https://weather-js-kalavhan.netlify.app">Live version</a>
+    ·
+    <a href="https://github.com/kalavhan/cut-me/issues">Report Bug</a>
+  </p>
+</p>
 
 ![Screenshot_2020-05-25 Weather app](https://user-images.githubusercontent.com/47485749/82841773-7dbb5980-9e94-11ea-80b3-059fb86332b2.png)
 
-## Built With
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+* [About the Project](#about-the-project)
+  * [Features](#features)
+  * [Built With](#built-with)
+* [Screenshots](#screenshots)
+* [Live Demo](#live-demo)
+* [Installation](#installation)
+  * [Prerequisites](#prerequisites)
+  * [Setup](#setup)
+  * [Usage](#usage)
+* [Contact](#contact)
+* [License](#license)
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+Weather app that implements Google Places API to get the name of the cities and OpenWeather API to get the climatological properties of the selected city.
+
+### Features
+- Search city by name
+- Get the climatoligcal properties of the selected city
+
+### Built With
 - Javascript(ES6)
 - Webpack
 - NodeJs
@@ -17,18 +52,12 @@ This is part of Javascript section in Microverse's Technical curriculum. Find it
 ## Live Demo
 [Live link](https://weather-js-kalavhan.netlify.app/)
 
-
-## Prerequisites
-- Webpack v4.43.0
+## Installation
+### Prerequisites
+- Webpack > v4.43.0
 - npm
 
-## Functionalities 
-- Search city in inputbox using [Google Places API](https://developers.google.com/places/web-service/intro?hl=es-419&utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_436364850706-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Places+%7C+BMM+%7C+Places+API-KWID_43700044580549616-aud-596989456221:kwd-335453537185-userloc_1010019&utm_term=KW_%2Bplaces%20%2Bapi-ST_%2Bplaces+%2Bapi&gclid=CjwKCAjw2a32BRBXEiwAUcugiNte-MhaH8Qdbd5cLgxL1oQ_QwaXsUBeF59cJ12yOxwkMKQW-qGLmxoC7GYQAvD_BwE)
-- Get weather data of selected city uing [Open Weather Current Api](https://openweathermap.org/current)
-- Swtich between imperial and metric system.
-
-## Setup
-
+### Setup
 Use the [git](https://git-scm.com/downloads) to clone the project to your local machine.
 ```sh
 $ git clone https://github.com/kalavhan/weather-app-js.git
@@ -50,28 +79,22 @@ $ npm start
 ```
 This will open the app at 127.0.0.1:9000. If it doesn't open, visit ```http://localhost:9000```
 
-## Author
+## Contact
 
 👤 **Josue Brigido**
 
 [Github](https://github.com/kalavhan) | [Twitter](https://twitter.com/kalavhan) | [LinkedIn](https://linkedin.com/in/kalavhan)
 
-
-
 ## 🤝 Contributing
-
 Contributions, issues and feature requests are welcome!
 
 ## Show your support
-
 Give a ⭐️ if you like this project!
 
 ## Acknowledgements
 - [Microverse](https://www.microverse.org/)
 - [The Odin Project](https://www.theodinproject.com/)
-- [Freecodecamp](http://freecodecamp.org/)
 
 ## 📝 License
-
 This project is licensed under MIT license - see [LICENSE](/LICENSE) for more details.
 
