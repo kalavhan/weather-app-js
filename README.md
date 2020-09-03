@@ -1,6 +1,6 @@
-[![npm version](https://badge.fury.io/js/webpack.svg)](https://badge.fury.io/js/webpack)
+[![webpack version](https://badge.fury.io/js/webpack.svg)](https://badge.fury.io/js/webpack)
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
-![issues](https://img.shields.io/github/issues/kalavhan/restaurant-page)
+![issues](https://img.shields.io/github/issues/kalavhan/weather-app-js)
 
 <br />
 <p align="center">
@@ -15,7 +15,7 @@
     ·
     <a href="https://weather-js-kalavhan.netlify.app">Live version</a>
     ·
-    <a href="https://github.com/kalavhan/cut-me/issues">Report Bug</a>
+    <a href="https://github.com/kalavhan/weather-app-js/issues">Report Bug</a>
   </p>
 </p>
 
